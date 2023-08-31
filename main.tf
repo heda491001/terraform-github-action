@@ -11,7 +11,9 @@ terraform {
 
 
 provider "aws" {
-  region     = "eu-central-1"
+  region = "us-east-1"
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
 }
 
 resource "aws_vpc" "vpc" {
@@ -20,4 +22,14 @@ resource "aws_vpc" "vpc" {
   tags = {
     Name = "my-vpc"
   }
+}
+
+variable "aws_access_key" {
+  type = string        
+  sensitive = true 
+}
+
+variable "aws_secret_key" {
+  type = string        
+  sensitive = true 
 }
